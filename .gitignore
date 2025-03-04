@@ -1,4 +1,3 @@
-
 # dependencies
 /node_modules
 /.pnp
@@ -29,6 +28,9 @@ coverage
 coverage.json
 typechain
 
-#Truffle files
+# Truffle files
 /Truffle/build
 /Truffle/data
+
+# IDE specific files
+.vs/
