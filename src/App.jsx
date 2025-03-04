@@ -17,37 +17,53 @@ import Mint from './containers/mint';
 import Stake from './containers/stake';
 
 const App = () => {
-  const { library, account } = useWeb3React();
-  useEffect(() => {
-    if (library) {
-      localStorage.setItem('connected', true);
-    }
-  }, [library, account]);
+    const { library, account } = useWeb3React();
+    useEffect(() => {
+        if (library) {
+            localStorage.setItem('connected', true);
+        }
+    }, [library, account]);
 
-  return (
-    <BrowserRouter>
-      <MainNavigation />
-      <main style={{ marginTop: 90, marginBottom: 90 }}>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/swap" component={Swap} />
-          <Route exact path="/gallery" component={Gallery} />
-          <Route exact path="/erc20balance" component={ERC20Balance} />
-          <Route exact path="/onramp" component={Ramper} />
-          <Route exact path="/transactions" component={Transactions} />
-          <Route exact path="/nfts" component={NFTs} />
-          <Route exact path="/pre-sale" component={Presale} />
-          <Route exact path="/mint" component={Mint} />
-          <Route exact path="/stake" component={Stake} />
-          <Route exact path="/nonauthenticated">
-            <>Please login using the "Authenticate" button</>
-          </Route>
-        </Switch>
-      </main>
-      <Footer />
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <MainNavigation />
+            <main style={{ marginTop: 90, marginBottom: 90 }}>
+                <div className="responsive-container">
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route exact path="/about" component={About} />
+                        <Route exact path="/swap" component={Swap} />
+                        <Route exact path="/gallery" component={Gallery} />
+                        <Route exact path="/erc20balance" component={ERC20Balance} />
+                        <Route exact path="/onramp" component={Ramper} />
+                        <Route exact path="/transactions" component={Transactions} />
+                        <Route exact path="/nfts" component={NFTs} />
+                        <Route exact path="/pre-sale" component={Presale} />
+                        <Route exact path="/mint" component={Mint} />
+                        <Route exact path="/stake" component={Stake} />
+                        <Route exact path="/nonauthenticated">
+                            <>Please login using the "Authenticate" button</>
+                        </Route>
+                    </Switch>
+                </div>
+            </main>
+            <Footer />
+            {/* Responsive Container Styles */}
+            <style>{`
+        .responsive-container {
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+        @media (max-width: 768px) {
+          .responsive-container {
+            padding: 0 10px;
+          }
+        }
+      `}</style>
+        </BrowserRouter>
+    );
 };
 
 export default App;
